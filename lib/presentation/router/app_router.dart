@@ -1,33 +1,40 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/logic/cubit/counter_cubit.dart';
-import 'package:flutter_application_1/presentation/screens/home_screen.dart';
-import 'package:flutter_application_1/presentation/screens/second_screen.dart';
-import 'package:flutter_application_1/presentation/screens/third_screen.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
+
+import '../../presentation/screens/home_screen.dart';
+import '../../presentation/screens/second_screen.dart';
+import '../../presentation/screens/settings_screen.dart';
+import '../../presentation/screens/third_screen.dart';
 
 class AppRouter {
-  Route onGenerateRoute(RouteSettings routeSettings) {
-    switch (routeSettings.name) {
+  Route? onGenerateRoute(RouteSettings settings) {
+    switch (settings.name) {
       case '/':
         return MaterialPageRoute(
-            builder: (_) =>
-                HomeScreen(title: 'Home Screen', color: Colors.blueAccent));
-        break;
+          builder: (_) => HomeScreen(
+            title: "Home Screen",
+            color: Colors.blueAccent,
+          ),
+        );
       case '/second':
         return MaterialPageRoute(
-            builder: (_) =>
-                SecondScreen(title: 'Second Screen', color: Colors.redAccent));
-        break;
+          builder: (_) => SecondScreen(
+            title: "Second Screen",
+            color: Colors.redAccent,
+          ),
+        );
       case '/third':
         return MaterialPageRoute(
-            builder: (_) =>
-                ThirdScreen(title: 'Third Screen', color: Colors.greenAccent));
-        break;
-      default:
+          builder: (_) => ThirdScreen(
+            title: "Thirst Screen",
+            color: Colors.greenAccent,
+          ),
+        );
+      case '/settings':
         return MaterialPageRoute(
-            builder: (_) =>
-                ThirdScreen(title: 'Third Screen', color: Colors.greenAccent));
+          builder: (_) => SettingsScreen(),
+        );
+      default:
+        return null;
     }
   }
 }
